@@ -19,14 +19,30 @@ class _HomePageState extends State<HomePage> {
     ];
     return Scaffold(
       appBar: AppBar(
-        title: Text('MY TODO LIST'),
+        title: const Text('MY TODO LIST'),
         backgroundColor: Color(0xff8daaa6),
       ),
       bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Color(0xff8daaa6),
-          /*unselectedItemColor: Color(0xff),selectedItemColor:Color(0xff)*/
+          backgroundColor: const Color(0xff8daaa6),
+          unselectedItemColor: const Color(0xffcacda5),
+          selectedItemColor: const Color(0xffcacda5),
           currentIndex: selectedIndex,
-          items: []),
+          onTap: (index) => setState(() {
+                selectedIndex = index;
+              }),
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.fact_check_outlined,
+              ),
+              label: "List",
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.check,
+                ),
+                label: "Completed")
+          ]),
     );
   }
 }
