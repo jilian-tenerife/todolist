@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'add_task.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,6 +22,15 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('MY TODO LIST'),
         backgroundColor: Color(0xff8daaa6),
+      ),
+      body: tabs[selectedIndex],
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Color(0xff99a285),
+        onPressed: () => showDialog(
+            context: context,
+            builder: (context) => AddTask(),
+            barrierDismissible: false),
+        child: Icon(Icons.add),
       ),
       bottomNavigationBar: BottomNavigationBar(
           backgroundColor: const Color(0xff8daaa6),
