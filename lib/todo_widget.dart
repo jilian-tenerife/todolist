@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:todolist/todo.dart';
 
 class TodoWidget extends StatelessWidget {
@@ -9,9 +10,42 @@ class TodoWidget extends StatelessWidget {
     required this.todo,
     Key? key,
   }) : super(key: key);
-
   @override
-  Widget build(BuildContext context) => Container(
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SingleChildScrollView(
+        child: Slidable(
+          key: Key(todo.id ?? 'default_value'),
+          startActionPane: ActionPane(
+            motion: ScrollMotion(),
+            children: [
+              SlidableAction(
+                onPressed: (context) {},
+                label: 'Edit',
+                icon: Icons.edit,
+                backgroundColor: Colors.green,
+              ),
+            ],
+          ),
+          endActionPane: ActionPane(
+            motion: ScrollMotion(),
+            children: [
+              SlidableAction(
+                onPressed: (context) {},
+                label: 'Delete',
+                icon: Icons.delete,
+                backgroundColor: Colors.red,
+              ),
+            ],
+          ),
+          child: buildTodo(),
+        ),
+      ),
+    );
+  }
+
+  Widget buildTodo() => Container(
         color: Color(0xff99a285),
         padding: EdgeInsets.all(20),
         child: Row(
