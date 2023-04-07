@@ -42,13 +42,13 @@ class TodoWidget extends StatelessWidget {
               ),
             ],
           ),
-          child: buildTodo(),
+          child: buildTodo(context),
         ),
       ),
     );
   }
 
-  Widget buildTodo() => Container(
+  Widget buildTodo(BuildContext context) => Container(
         color: Color(0xff99a285),
         padding: EdgeInsets.all(20),
         child: Row(
@@ -57,7 +57,14 @@ class TodoWidget extends StatelessWidget {
               activeColor: Color(0xff8daaa6),
               checkColor: Color(0xff99a285),
               value: todo.isDone,
-              onChanged: (_) {},
+              onChanged: (_) {
+                final provider =
+                    Provider.of<TodoProvider>(context, listen: false);
+                final isDone = provider.toggleTodoStatus(todo);
+
+                Utils.showSnackBar(context,
+                    isDone ? 'Task Completed' : 'Task marked incomplete');
+              },
             ),
             const SizedBox(
               width: 20,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'add_task.dart';
+import 'completed_list_widget.dart';
 import 'todo_list_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final tabs = [
       TodoListWidget(),
-      Container(),
+      CompletedListWidget(),
     ];
     return Scaffold(
       appBar: AppBar(
