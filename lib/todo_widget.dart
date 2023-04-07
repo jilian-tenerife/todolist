@@ -7,6 +7,8 @@ import 'package:todolist/todo.dart';
 import 'package:todolist/todos.dart';
 import 'package:todolist/utils.dart';
 
+import 'edit_todo.dart';
+
 class TodoWidget extends StatelessWidget {
   final Todo todo;
   const TodoWidget({
@@ -24,7 +26,7 @@ class TodoWidget extends StatelessWidget {
             motion: ScrollMotion(),
             children: [
               SlidableAction(
-                onPressed: (context) {},
+                onPressed: (context) => editTodo(context, todo),
                 label: 'Edit',
                 icon: Icons.edit,
                 backgroundColor: Colors.green,
@@ -99,4 +101,7 @@ class TodoWidget extends StatelessWidget {
 
     Utils.showSnackBar(context, 'Task Deleted');
   }
+
+  void editTodo(BuildContext context, Todo todo) => Navigator.of(context)
+      .push(MaterialPageRoute(builder: (context) => EditTodoPage(todo: todo)));
 }
