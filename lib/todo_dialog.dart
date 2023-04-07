@@ -8,15 +8,14 @@ class Add_Task_Dialog extends StatelessWidget {
   final ValueChanged<String> onChangedDescription;
   final VoidCallback onSavedTodo;
 
-  const Add_Task_Dialog({
-    Key? key,
-    this.title = '',
-    this.description = '',
-    required this.onChangedTitle,
-    required this.onChangedDescription,
-    required this.onSavedTodo,
-    required void Function(dynamic description) OnChangedDescription,
-  }) : super(key: key);
+  const Add_Task_Dialog(
+      {Key? key,
+      this.title = '',
+      this.description = '',
+      required this.onChangedTitle,
+      required this.onChangedDescription,
+      required this.onSavedTodo})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
